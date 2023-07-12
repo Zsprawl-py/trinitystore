@@ -1,0 +1,24 @@
+{% extends "base_shop.html" %}
+{% load static %}
+
+{% block content %}
+  <div id="main" class="product-list">
+        {% for product in products %}
+            <div class="item">
+                <a href="{{ product.get_absolute_url }}">
+                    <img src="{% if product.image %}{{ product.image.url }}{% else %}
+                    {% static "shop/img/no_image.png" %}{% endif %}">
+                </a>
+                <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+                <br>
+                ${{ product.price }}
+                <br>
+                <form action="{% url "order:create_order" %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="plan" value="{{ product.plan_type }}">
+                    <input type="submit" value="Buy">
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

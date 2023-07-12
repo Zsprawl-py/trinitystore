@@ -1,0 +1,35 @@
+{% load static %}
+{% load blog_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
+</head>
+<body>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+    <div id="sidebar">
+        <h2>My blog</h2>
+        <p>
+            This is my blog.
+            I've written {% total_posts %} posts.
+        </p>
+        <h3>latest posts</h3>
+        {% get_latest_posts 3 %}
+        <h3>Most commented posts</h3>
+        {% get_most_commented_post as most_commented_post %}
+        <ul>
+            {% for post in most_commented_post %}
+                <li>
+                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</body>
+</html>
