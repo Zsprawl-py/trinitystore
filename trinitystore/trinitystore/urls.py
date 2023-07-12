@@ -23,6 +23,10 @@ urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('account/', include('account.urls', namespace='account')),
                   path('first/', include('firstpage.urls', namespace='firstpage')),
+                  path('social-auth', include('social_django.urls', namespace='social')),
+                  path('order/', include('order.urls', namespace='order')),
+                  path('payment/', include('payment.urls', namespace='payment')),
+                  path('store/', include('shop.urls', namespace='shop')),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:

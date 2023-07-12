@@ -33,8 +33,8 @@ urlpatterns = [
     path('', views.dashboard, name='dashboard'),
     path('profile/', views.profile, name='profile'),
     path('register/', views.register, name='register'),
-    # path('edit/', views.do_edit, name='do-edit'),
-    # path('post/ajax/friend', views.edit, name='edit'),
+    path('edit/', views.do_edit, name='do-edit'),
+    path('post/ajax/friend', views.edit, name='edit'),
     path('vip/', views.vip, name='vip'),
     path('vip/download/', views.download, name='file_download')
 ]
