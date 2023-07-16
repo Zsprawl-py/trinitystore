@@ -52,7 +52,8 @@ atlassian-ide-plugin.xml
 # Distribution / packaging 
 .Python build/ 
 develop-eggs/ 
-dist/ 
+## because of AdminLte
+# dist/ 
 downloads/ 
 eggs/ 
 .eggs/ 
